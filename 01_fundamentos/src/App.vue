@@ -23,6 +23,9 @@ export default {
     <img alt="Vue logo" src="./assets/logo.svg" width="125" height="125">
     <small>
       <h1>Hola VueJs 3</h1>
+      <p>Develop by: 
+        <a href="https://isnotcristhianr.me/">Isnotcristhianr</a>
+      </p>
     </small>
     <hr />
     <h2>Contador: {{ contador }}</h2>
