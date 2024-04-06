@@ -3,7 +3,7 @@
 import Grid from './Grid.vue';
 
 export default {
-  components: { Grid },
+    components: { Grid },
     props: {
         url: String,
         title: String,
