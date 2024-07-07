@@ -14,16 +14,16 @@ export default {
         actividad: this.actividad,
         terminos: this.terminos
       }
-      
+
       this.proyectos.push(proyecto)
 
       console.log(
         this.proyectos
       )
 
-      this.nombre=""
-      this.actividad=""
-      this.terminos=false
+      this.nombre = ""
+      this.actividad = ""
+      this.terminos = false
 
     }
   }
@@ -54,17 +54,40 @@ export default {
         <br>
         <div class="mb-3">
           <label for="" class="form-check-label">
-            <input type="checkbox" class="form-check-input" id="terminos" v-model.trim="terminos"> Acepto términos y condiciones
+            <input type="checkbox" class="form-check-input" id="terminos" v-model.trim="terminos"> Acepto términos y
+            condiciones
           </label>
         </div>
         <button type="submit" class="btn btn-success m-2">Enviar</button>
       </form>
-      <hr>
     </div>
+    <hr>
+    <!--
     <pre>
-        Proyecto: {{ nombre }}
+      Proyecto: {{ nombre }}
         Actividad: {{ actividad }}
         Terminos: {{ terminos }}
       </pre>
+      -->
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Proyecto</th>
+            <th>Actividad</th>
+            <th>Terminos</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(proyecto, index) in proyectos" :key="index">
+            <td>{{ index + 1 }}</td>
+            <td>{{ proyecto.nombre }}</td>
+            <td>{{ proyecto.actividad }}</td>
+            <td :class="proyecto.terminos ? 'bg-success' : 'bg-danger'">{{ proyecto.terminos ? "Si" : "No" }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </template>
