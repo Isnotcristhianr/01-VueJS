@@ -4,7 +4,8 @@ export default {
     nombre: '',
     actividad: '',
     terminos: false,
-    proyectos: []
+    proyectos: [],
+    numProyectos: 0
   }),
   methods: {
     registrarProyecto() {
@@ -25,6 +26,14 @@ export default {
       this.actividad = ""
       this.terminos = false
 
+    },
+    cambioEstado(id) {
+      this.proyectos[id].terminos = !this.proyectos[id].terminos
+    }
+  },
+  computed: {
+    numProyectos() {
+      return this.proyectos.length
     }
   }
 }
@@ -69,6 +78,13 @@ export default {
         Terminos: {{ terminos }}
       </pre>
       -->
+
+    <div class="col-12">
+      <h2>Proyectos registrados</h2>
+    </div>
+    <div class="col-12">
+      <h3>Total de proyectos: {{ numProyectos }}</h3>
+    </div>
     <div class="table-responsive">
       <table class="table table-striped">
         <thead>
@@ -84,7 +100,8 @@ export default {
             <td>{{ index + 1 }}</td>
             <td>{{ proyecto.nombre }}</td>
             <td>{{ proyecto.actividad }}</td>
-            <td :class="proyecto.terminos ? 'bg-success' : 'bg-danger'">{{ proyecto.terminos ? "Si" : "No" }}</td>
+            <td @click="cambioEstado(index)" :class="proyecto.terminos ? 'bg-success' : 'bg-danger'">{{
+              proyecto.terminos ? "Si" : "No" }}</td>
           </tr>
         </tbody>
       </table>
