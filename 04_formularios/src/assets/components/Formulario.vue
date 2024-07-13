@@ -1,70 +1,3 @@
-<script>
-import ProgressBar from './ProgressBar.vue'
-import TotalProyectos from './TotalProyectos.vue'
-
-export default {
-  components: { ProgressBar, TotalProyectos},
-  data: () => ({
-    nombre: '',
-    actividad: '',
-    terminos: false,
-    proyectos: [],
-    numProyectos: 0,
-    estadoCompletado: false
-  }),
-  methods: {
-    registrarProyecto() {
-
-      //completado: false
-
-      const proyecto = {
-        nombre: this.nombre,
-        actividad: this.actividad,
-        terminos: this.terminos
-      }
-
-      this.proyectos.push(proyecto)
-
-      console.log(
-        this.proyectos
-      )
-
-      this.nombre = ""
-      this.actividad = ""
-      this.terminos = false
-
-    },
-    cambioEstado(id) {
-      this.proyectos[id].terminos = !this.proyectos[id].terminos
-      if (this.proyectos[id].terminos == false) {
-        this.estadoCompletado = false
-      } else {
-        this.estadoCompletado = true
-      }
-    }
-  },
-  computed: {
-    numProy() {
-      return this.proyectos.length
-    },
-    porcentaje() {
-
-      let completados = 0
-
-      this.proyectos.map(proyecto => {
-        if (proyecto.terminos)
-          completados++
-      })
-
-      console.log((completados * 100) / this.numProy)
-
-      return ((completados * 100) / this.numProy) || 0
-    }
-  }
-}
-</script>
-
-
 <template>
   <div>
 
@@ -79,9 +12,7 @@ export default {
 
     <div class="row">
       <div class="col-12 mb-4">
-        <ProgressBar
-          :porcentaje="porcentaje"
-        />
+        <ProgressBar :porcentaje="porcentaje" />
       </div>
       <div class="col-12 col-md-4">
         <div class="col-12">
@@ -114,13 +45,102 @@ export default {
         </div>
       </div>
       <div class="col-12 col-md-8">
-        <TotalProyectos
-          :numProy="numProy"
-          :proyectos="proyectos"
-          :cambioEstado="cambioEstado"
-        />
+        <TotalProyectos :numProy="numProy" :proyectos="proyectos" :cambioEstado="cambioEstado" :limpiarLocalStorage= "limpiarLocalStorage" />
       </div>
     </div>
   </div>
 
 </template>
+
+<script>
+import ProgressBar from './ProgressBar.vue'
+import TotalProyectos from './TotalProyectos.vue'
+
+export default {
+  components: { ProgressBar, TotalProyectos },
+  data: () => ({
+    nombre: '',
+    actividad: '',
+    terminos: false,
+    proyectos: [],
+    numProyectos: 0,
+    estadoCompletado: false
+  }),
+  methods: {
+    registrarProyecto() {
+
+      //completado: false
+
+      const proyecto = {
+        nombre: this.nombre,
+        actividad: this.actividad,
+        terminos: this.terminos
+      }
+
+      this.proyectos.push(proyecto)
+
+      //guardar localstorage
+      this.saveLocalStorage()
+
+      console.log(
+        this.proyectos
+      )
+
+      this.nombre = ""
+      this.actividad = ""
+      this.terminos = false
+
+    },
+    cambioEstado(id) {
+
+      this.proyectos[id].terminos = !this.proyectos[id].terminos
+      if (this.proyectos[id].terminos == false) {
+        this.estadoCompletado = false
+      } else {
+        this.estadoCompletado = true
+      }
+
+      //actualizar local storage
+      this.saveLocalStorage()
+    },
+    saveLocalStorage() {
+      try {
+        localStorage.setItem("proyectos", JSON.stringify(this.proyectos));
+      } catch (error) {
+        console.error("Error al guardar en localStorage:", error);
+      }
+    },
+    limpiarLocalStorage() {
+      //solo clave valor
+      localStorage.removeItem("proyectos")
+      //todo
+      //localStorage.clear();
+
+      this.proyectos = []
+    }
+  },
+  computed: {
+    numProy() {
+      return this.proyectos.length
+    },
+    porcentaje() {
+
+      let completados = 0
+
+      this.proyectos.map(proyecto => {
+        if (proyecto.terminos)
+          completados++
+      })
+
+      console.log((completados * 100) / this.numProy)
+
+      return ((completados * 100) / this.numProy) || 0
+    },
+  },
+  mounted() {
+    console.log('Componente montado')
+
+    this.proyectos = JSON.parse(localStorage.getItem("proyectos")) || []
+  }
+}
+</script>

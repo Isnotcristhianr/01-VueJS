@@ -1,6 +1,13 @@
 <template>
     <div>
-        <h3>Proyectos registrados: {{ numProy }}</h3>
+        <div class="row">
+            <div class="col-6">
+                <h3>Proyectos registrados: {{ numProy }}</h3>
+            </div>
+            <div class="col-6 text-end">
+                <button @click="limpiarLocalStorage" class="btn btn-danger ">Vaciar 🗑️</button>
+            </div>
+        </div>
         <hr>
         <div class="table-responsive">
             <table class="table table-striped">
@@ -34,7 +41,8 @@
 
 <script>
 export default {
-    props: ['numProy', 'proyectos', "cambioEstado"]
+    props: ['numProy', 'proyectos', "cambioEstado", "limpiarLocalStorage"],
+   
 }
 </script>
 
