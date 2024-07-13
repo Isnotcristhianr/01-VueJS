@@ -46,7 +46,7 @@
       </div>
       <div class="col-12 col-md-8">
         <TotalProyectos :numProy="numProy" :proyectos="proyectos" :cambioEstado="cambioEstado" :limpiarLocalStorage= "limpiarLocalStorage" />
-      </div>
+      </div>#naty
     </div>
   </div>
 
