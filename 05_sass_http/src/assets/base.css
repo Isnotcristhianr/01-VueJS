@@ -22,4 +22,8 @@ h1 {
   background-color: #2b2b2b;
   opacity: 0.8;
   box-shadow: 3px 3px 13px snow;
+}
+
+.grid {
+  display: flex;
 }/*# sourceMappingURL=base.css.map */

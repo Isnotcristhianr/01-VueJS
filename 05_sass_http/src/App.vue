@@ -1,19 +1,28 @@
     <script>
     import Formulario from '../src/components/Formulario.vue'
     import Data from '../src/components/Data.vue'
+    import Grid from '../src/components/Grid.vue'
     export default {
-      components: { Formulario, Data },
+      components: { Formulario, Data, Grid },
 
     }
 </script>
     
 <template>
-  <div class="contenedor">
-    <h1>Cotizador Criptomonedas</h1>
+  <div>
 
-    <formulario />
+    <div class="contenedor">
+      <h1>Cotizador Criptomonedas</h1>
+    </div>
 
-    <Data />
+
+    <div class="contenedor">
+      <grid>
+        <formulario />
+
+        <Data />
+      </grid>
+    </div>
 
   </div>
 </template>
