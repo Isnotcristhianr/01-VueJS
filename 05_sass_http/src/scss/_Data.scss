@@ -1,0 +1,51 @@
+.data{
+    text-align: center;
+    color: $primary;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #000;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px #000;
+    transition: all 0.5s;
+    &:hover{
+        color: blue;
+        background-color: #000;
+        box-shadow: 10px 10px 10px #000;
+    }
+}
+
+h2{
+    margin-top: 5px;
+    color: teal;
+}
+
+h3{
+    font-size: 30px;
+    font-weight: bold;
+    &.cripto{
+        color: $primary;
+    }
+    &.cripto2{
+        color: $secondary;
+    }
+   
+}
+
+img{
+    width: 150px;
+    border-radius: 50%;
+    margin-top: 10px;   
+}
+
+p{
+    font-size: 30px;
+    color: $primary;
+    font-weight: bold;
+    margin-top: 10px;
+    & strong{
+        color: $secondary;
+    }
+}
