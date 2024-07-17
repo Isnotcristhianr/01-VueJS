@@ -26,6 +26,11 @@
                     <option value="LTC">Litecoin</option>
                 </select>
             </div>
+            <div>
+                <button type="submit">
+                    Cotizar
+                </button>
+            </div>
         </form>
         
     </div>
