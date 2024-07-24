@@ -4,23 +4,43 @@
 
         <h3>
             <span class="cript">
-                BTC 
+                {{ cripto }}
             </span>
-            - 
+            -
             <span class="moneda">
-                USD
+                {{ divisa }}
             </span>
         </h3>
 
-        <img src="" alt="">
-        <p>El precio es: <strong>$10000</strong></p>
+        <img :src="`https://www.cryptocompare.com${img}`" alt="">
+        <p>El precio es: <strong>
+                {{ precio }}
+            </strong></p>
 
     </div>
-  
+
 </template>
 
 <script>
 export default {
+    props: {
+        cripto: {
+            type: String,
+            required: true
+        },
+        divisa: {
+            type: String,
+            required: true
+        },
+        img: {
+            type: String,
+            required: true
+        },
+        precio: {
+            type: Number,
+            required: true
+        },
 
+    },
 }
 </script>

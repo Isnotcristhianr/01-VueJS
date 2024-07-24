@@ -1,12 +1,12 @@
 <template>
     <div>
-        
-        <form action="" class="form">
+
+        <form action="" class="form" @submit.prevent="$emit('info', criptomoneda, divisa)">
             <div>
                 <label for="">
-                    Divisa: 
+                    Divisa:
                 </label>
-                <select name="" id="" required class="select">
+                <select v-model="divisa" name="" id="" required class="select">
                     <option value="" disabled selected>Elige una divisa..</option>
                     <option value="USD">USD</option>
                     <option value="EUR">EUR</option>
@@ -16,9 +16,9 @@
             </div>
             <div>
                 <label for="">
-                    Criptomoneda:  
+                    Criptomoneda:
                 </label>
-                <select name="" id="" required class="select">
+                <select v-model="criptomoneda" name="" id="" required class="select">
                     <option value="" disabled selected>Elige una criptomoneda..</option>
                     <option value="BTC">Bitcoin</option>
                     <option value="ETH">Ethereum</option>
@@ -32,12 +32,16 @@
                 </button>
             </div>
         </form>
-        
+
     </div>
 </template>
 
 <script>
 export default {
+    data: () => ({
+        criptomoneda: "",
+        divisa: "",
+    }),
 
 }
 </script>
