@@ -46,7 +46,7 @@
       <h1>Cotizador Criptomonedas</h1>
       <div class="profile">
         <h5>Desarrollado por: </h5>
-        <a href="">IsnotCristhianr</a>
+        <a href="https://isnotcristhianr.me/">IsnotCristhianr</a>
       </div>
     </div>
 
