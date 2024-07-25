@@ -22,7 +22,6 @@ export default defineConfig({
         display: 'standalone',
         scope: '/',
         start_url: '/',
-        srcPath: './public/manifest.json',
           icons: [
             {
               'src': '/windows11/SmallTile.scale-100.png',
@@ -433,11 +432,13 @@ export default defineConfig({
            
             {
               'src': '/ios/152.png',
-              'sizes': '152x152'
+              'sizes': '152x152',
+              'type': 'image/png'
             },
             {
               'src': '/ios/167.png',
-              'sizes': '167x167'
+              'sizes': '167x167',
+              'type': 'image/png'
             },
             {
               'src': '/ios/180.png',
@@ -445,19 +446,23 @@ export default defineConfig({
             },
             {
               'src': '/ios/192.png',
-              'sizes': '192x192'
+              'sizes': '192x192',
+              'type': 'image/png'
             },
             {
               'src': '/ios/256.png',
-              'sizes': '256x256'
+              'sizes': '256x256',
+              'type': 'image/png'
             },
             {
               'src': '/ios/512.png',
-              'sizes': '512x512'
+              'sizes': '512x512',
+              'type': 'image/png'
             },
             {
               'src': '/ios/1024.png',
-              'sizes': '1024x1024'
+              'sizes': '1024x1024',
+              'type': 'image/png'
             }
           ]
         
