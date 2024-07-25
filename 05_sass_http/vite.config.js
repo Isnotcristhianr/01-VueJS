@@ -22,7 +22,7 @@ export default defineConfig({
         display: 'standalone',
         scope: '/',
         start_url: '/',
-        
+        srcPath: './public/manifest.json',
           icons: [
             {
               'src': '/windows11/SmallTile.scale-100.png',
