@@ -2,8 +2,12 @@
     import Formulario from '../src/components/Formulario.vue'
     import Data from '../src/components/Data.vue'
     import Grid from '../src/components/Grid.vue'
+    import ReloadPrompt from '../src/components/ReloadPrompt.vue'
+
+    //reload
+    
     export default {
-      components: { Formulario, Data, Grid },
+      components: { Formulario, Data, Grid, ReloadPrompt },
       data() {
         return {
           criptomoneda: "🪙",
@@ -59,6 +63,9 @@
       </grid>
     </div>
 
+
+    <!-- reload -->
+    <reload-prompt />
   </div>
 </template>
 
