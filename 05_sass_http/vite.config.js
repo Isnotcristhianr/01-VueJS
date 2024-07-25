@@ -32,10 +32,7 @@ export default defineConfig({
               'src': 'windows11/SmallTile.scale-125.png',
               'sizes': '89x89'
             },
-            {
-              'src': 'windows11/SmallTile.scale-150.png',
-              'sizes': '107x107'
-            },
+            
             {
               'src': 'windows11/SmallTile.scale-200.png',
               'sizes': '142x142'
