@@ -352,10 +352,7 @@ export default defineConfig({
               'src': 'android/android-launchericon-192-192.png',
               'sizes': '192x192'
             },
-            {
-              'src': 'android/android-launchericon-144-144.png',
-              'sizes': '144x144'
-            },
+            
             {
               'src': 'android/android-launchericon-96-96.png',
               'sizes': '96x96'
@@ -440,10 +437,7 @@ export default defineConfig({
               'src': 'ios/128.png',
               'sizes': '128x128'
             },
-            {
-              'src': 'ios/144.png',
-              'sizes': '144x144'
-            },
+           
             {
               'src': 'ios/152.png',
               'sizes': '152x152'
