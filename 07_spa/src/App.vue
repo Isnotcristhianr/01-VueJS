@@ -10,10 +10,14 @@ export default {
 
 <template>
   <div>
-    <h1>Vue Router</h1>
-    <br>
-    <router-view />
     
+    <nav>
+      <router-link to="/">Home</router-link> |
+      <router-Link to="/about">About</router-link> |
+      <router-link to="/gifs">Gifs</router-link>
+    </nav>
+
+    <router-view />
   </div>
 </template>
 
