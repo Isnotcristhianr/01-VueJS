@@ -7,9 +7,8 @@ import vue from '@vitejs/plugin-vue'
 export default defineConfig({
   plugins:  [vue()],
   css: {
-    postcss: {
-      plugins: [tailwindcss, autoprefixer],
-    },
+    postcss: fileURLToPath(new URL('./postcss.config.js', import.meta.url))
+
   },
   resolve: {
     alias: {
