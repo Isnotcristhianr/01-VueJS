@@ -2,6 +2,13 @@
   <div>
     <h1 class="text-3xl font-bold text-center">Bienvenido!</h1>
 
+    <!-- desarrollado por -->
+    <p class="text-center mt-5">Desarrollado por <a href="https://isnotcristhianr.me/" target="_blank"
+        class="text-underline text-cyan-500 underline underline-offset-2">IsnotCristhianr</a></p>
+        <br>
+        <hr>
+        
+
     <p class="text-center mt-5">Aquí tienes un gif aleatorio:</p>
 
     <div class="flex justify-center mt-5">

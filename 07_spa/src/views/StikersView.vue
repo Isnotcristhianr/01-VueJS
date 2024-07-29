@@ -23,6 +23,7 @@
 import Card from '../components/Card.vue';
 import Search from '../components/Search.vue';
 import Loading from '../components/Loading.vue';
+import swal from 'sweetalert2';
 
 export default {
     components: {
@@ -35,7 +36,11 @@ export default {
         async getStikers(busqueda = 'cat') {
 
             if (busqueda.trim() === "") {
-                alert('Debes escribir algo en el buscador');
+                swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Debes escribir algo en el buscador',
+                });
                 return;
             }
 

@@ -4,9 +4,7 @@
     <p class="text-center mt-5">Busca gifs en la barra de navegación</p>
 
 
-    <Search 
-      @buscar="getGifs"
-    />
+    <Search @buscar="getGifs" />
 
     <div v-if="gifs.length === 0">
       <Loading />
@@ -25,6 +23,7 @@
 import Card from '../components/Card.vue';
 import Search from '../components/Search.vue';
 import Loading from '../components/Loading.vue';
+import swal from 'sweetalert2';
 
 export default {
   components: {
@@ -37,7 +36,11 @@ export default {
     async getGifs(busqueda = 'cat') {
 
       if (busqueda.trim() === "") {
-        alert('Debes escribir algo en el buscador');
+        swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Debes escribir algo en el buscador',
+        });
         return;
       }
 

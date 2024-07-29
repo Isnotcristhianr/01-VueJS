@@ -11,7 +11,7 @@ const navigation = computed(() => [
   { name: 'About', href: '/about', current: route.path === '/about' },
   { name: 'Gifs', href: '/gifs', current: route.path === '/gifs' },
   { name: 'Stikers', href: '/stikers', current: route.path === '/stikers' },
-  { name: 'Users', href: '/users', current: route.path === '/users' },
+ // { name: 'Users', href: '/users', current: route.path === '/users' },
 ])
 </script>
 
