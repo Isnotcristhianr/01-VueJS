@@ -8,6 +8,10 @@
       @buscar="getGifs"
     />
 
+    <div v-if="gifs.length === 0">
+      <Loading />
+    </div>
+
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-5 m-2">
       <div v-for="gif in gifs" :key="gif.id" class="rounded-lg shadow-md bg-white p-2">
         <Card :gif="gif" />
@@ -20,10 +24,11 @@
 
 import Card from '../components/Card.vue';
 import Search from '../components/Search.vue';
+import Loading from '../components/Loading.vue';
 
 export default {
   components: {
-    Card, Search
+    Card, Search, Loading
   },
   data: () => ({
     gifs: []

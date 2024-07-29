@@ -36,6 +36,11 @@ const router = createRouter({
       path: '/users/edit/:id',
       name: 'users_edit_id',
       component: () => import('../views/UsersEditView.vue')
+    },
+    {
+      path: '/stikers',
+      name: 'stikers',
+      component: () => import('../views/StikersView.vue')
     }
   ]
 })
