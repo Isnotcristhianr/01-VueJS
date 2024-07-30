@@ -5,16 +5,14 @@
 
 <script>
 export default {
-    props: ['elementos'], 
+    props: ['elementos'],
     methods: {
         select(elemento) {
             console.log(elemento),
-            alert(elemento.nombre)
+                alert(elemento.nombre)
         }
     }
 }
 </script>
 
-<style>
-
-</style>
+<style></style>
