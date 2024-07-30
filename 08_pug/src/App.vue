@@ -1,47 +1,77 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
-</script>
+<template lang="pug">
+div
+  h1 Hello World
+  p This is a paragraph
+  p This is another paragraph
 
-<template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
+div.element
+  ol
+    li.element2 Item 1
+    li#id Item 2
+    li Item 3
+    li Item 4
+    li Item 5
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
+div
+  label Enlace
+  br
+  a(
+    href="https://www.google.com"
+    target="_blank"
+    ) Google Pug
 
-  <main>
-    <TheWelcome />
-  </main>
+div
+  h2 Papeleria
+  ul
+    li(v-for="papel in papeleria" :key="papel.id") {{ papel.nombre }} - {{ papel.precio }}
+
+div
+  h2 Componente props
+  Lista(:elementos="papeleria")
+
 </template>
 
+<script>
+import Lista from './components/Lista.vue'
+
+export default {
+  components: {
+    Lista
+  },
+  data: () => ({
+    msg: 'Hello World',
+    papeleria: [
+      { id: 1, nombre: 'Lapiz', precio: 0.5 },
+      { id: 2, nombre: 'Boligrafo', precio: 1 },
+      { id: 3, nombre: 'Goma', precio: 0.25 },
+      { id: 4, nombre: 'Sacapuntas', precio: 1.5 },
+      { id: 5, nombre: 'Cuaderno', precio: 2.5 },
+    ],
+    juegos: [
+      { id: 1, nombre: 'Ajedrez', precio: 10 },
+      { id: 2, nombre: 'Dominó', precio: 5 },
+      { id: 3, nombre: 'Parchís', precio: 7 },
+      { id: 4, nombre: 'Monopoly', precio: 20 },
+      { id: 5, nombre: 'Risk', precio: 15 },
+    ]
+  })
+}
+</script>
+
 <style scoped>
-header {
-  line-height: 1.5;
+h1 {
+  color: rgb(201, 113, 113);
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
+.element {
+  color: green;
 }
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
+.element2 {
+  color: blue;
+}
 
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
+#id {
+  color: gray;
 }
 </style>
