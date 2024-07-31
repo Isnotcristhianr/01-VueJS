@@ -1,9 +1,11 @@
 <script setup>
-import TheWelcome from '../components/TheWelcome.vue'
+const msg = ('Composition API')
 </script>
 
 <template>
-  <main>
-    <TheWelcome />
-  </main>
+  <div>
+    <h1>Refs</h1>
+    <hr>
+    {{ msg }}
+  </div>
 </template>
