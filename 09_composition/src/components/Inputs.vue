@@ -33,8 +33,8 @@ const { num, formulario } = defineProps(["num", "formulario"]);
 //life cicle hoocks
 onUnmounted(() => {
     console.log("Componente desmontado");
-    formulario.name[num] = null;
-    formulario.level[num] = null;
+    formulario.name.pop(num);
+    formulario.level.pop(num);
 });
 </script>
 
