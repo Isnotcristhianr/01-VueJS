@@ -1,6 +1,17 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
+  <div>
+    <h1>Componentes</h1>
+    <hr>
+
+    <Counter :initialValue="100" />
+
   </div>
 </template>
 
+<script setup>
+
+import Counter from '../components/Counter.vue'
+
+
+
+</script>
