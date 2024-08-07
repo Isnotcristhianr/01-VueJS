@@ -11,6 +11,9 @@
         ]
       }
     ],
-    "manifest-app-name": "off"
+    "manifest-app-name": "off",
+    "typescript-config/consistent-casing": "off",
+    "typescript-config/strict": "off",
+    "typescript-config/is-valid": "off"
   }
 }
