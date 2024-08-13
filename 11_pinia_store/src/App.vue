@@ -2,13 +2,13 @@
   <div class="bg-slate-900">
   <div id="app">
 
-      <h1 class="text-center font-bold text-3xl text-white">Pinia Store</h1>
+    <Header />
       <Cart />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import Cart from "./components/Cart.vue";
-
+  import Cart from "./components/Cart.vue";
+  import Header from "./components/Header.vue";
 </script>
