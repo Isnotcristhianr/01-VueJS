@@ -16,6 +16,7 @@ interface ProductStore {
   available: Product[];
   selected: SelectedProduct[];
   quantity: () => number;
+  
 }
 
 export const useProductStore = defineStore("product", () => {
@@ -80,6 +81,18 @@ export const useProductStore = defineStore("product", () => {
       ? products.selected.map((products) => products.quantity)
       : 0
   ); */
+
+  //eliminar
+  /* const removeProduct = (product: SelectedProduct) => {
+    const index = products.selected.findIndex(
+      (selectedProduct) => selectedProduct.name === product.name
+    );
+
+    if (index !== -1) {
+      products.selected.splice(index, 1);
+    }
+  } */
+
 
   return {
     products,
