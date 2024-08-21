@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import { reactive } from "vue";
+import { computed, reactive } from "vue";
 
 //asignar el tipado
 interface Product {
@@ -15,10 +15,11 @@ interface SelectedProduct extends Product {
 interface ProductStore {
   available: Product[];
   selected: SelectedProduct[];
+  quantity: () => number;
 }
 
 export const useProductStore = defineStore("product", () => {
-  const products = reactive<ProductStore>({
+  const products: ProductStore = reactive<ProductStore>({
     available: [
       {
         img: "https://images.unsplash.com/photo-1629198688000-71f23e745b6e?q=80&w=1480&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -52,9 +53,36 @@ export const useProductStore = defineStore("product", () => {
       },
     ],
     selected: [],
+    quantity: () => products.selected.length > 0
+      ? products.selected.map((products) => products.quantity).reduce((a, b) => a + b)
+      : 0,
   });
+
+  //agregrar
+  const addProduct = (product: Product) => {
+    const productExist = products.selected.find(
+      (selectedProduct) => selectedProduct.name === product.name
+    );
+
+    //solo agregar un solo producto
+    if (productExist) {
+      productExist.quantity++;
+      return;
+    }
+
+    products.selected.push({ ...product, quantity: 1 });
+    console.log(products.selected);
+  };
+
+  //cantidad
+  /* const quantity = computed(() =>
+    products.selected.length > 0
+      ? products.selected.map((products) => products.quantity)
+      : 0
+  ); */
 
   return {
     products,
+    addProduct,
   };
 });

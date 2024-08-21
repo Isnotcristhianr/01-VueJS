@@ -1,6 +1,6 @@
 <template>
   <div class="bg-slate-900">
-    <div id="app">
+    <div id="app" >
       <Header />
       <Cart />
     </div>
