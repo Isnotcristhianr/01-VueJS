@@ -44,5 +44,5 @@
 import { useProductStore } from '../stores/product.store';
 
 
-const {products, removeProduct} = useProductStore();
+const {products} = useProductStore();
 </script>
