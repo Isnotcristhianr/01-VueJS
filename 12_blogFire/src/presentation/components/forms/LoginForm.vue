@@ -37,7 +37,7 @@
       <div class="card text-center m-1">
         <button class="btn btn-primary">Login</button>
         <!-- with google -->
-        <button class="btn m-1">
+        <button class="btn m-1" disabled>
           <!-- usar svg -->
           <img src="../../assets/Icono Google.svg" alt="" width="20" />
           Login with Google
