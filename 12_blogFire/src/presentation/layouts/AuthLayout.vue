@@ -1,5 +1,5 @@
 <template>
-  <div >
+  <div>
     <div class="m-4 p-2">
         <div class="card glass w-auto shadow-xl h-screen p-2">
           <figure>

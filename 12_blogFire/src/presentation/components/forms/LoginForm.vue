@@ -1,6 +1,7 @@
+import { useAuthStore } from '../../stores/auth.store';
 <template>
   <div>
-    <form>
+    <form @submit.prevent="LoginEmailAndPassword">
       <div class="form-control">
         <label class="input input-bordered flex items-center gap-2 m-1">
           <svg
@@ -16,7 +17,9 @@
               d="M15 6.954 8.978 9.86a2.25 2.25 0 0 1-1.956 0L1 6.954V11.5A1.5 1.5 0 0 0 2.5 13h11a1.5 1.5 0 0 0 1.5-1.5V6.954Z"
             />
           </svg>
-          <input type="text" class="grow" placeholder="Email" />
+          <input
+          v-model="LoginForm.email"
+          type="text" class="grow" placeholder="Email" />
         </label>
         <label class="input input-bordered flex items-center gap-2 m-1">
           <svg
@@ -31,7 +34,9 @@
               clip-rule="evenodd"
             />
           </svg>
-          <input type="password" class="grow" value="password" />
+          <input
+          v-model="LoginForm.password"
+          type="password" class="grow" placeholder="password" />
         </label>
       </div>
       <div class="card text-center m-1">
@@ -44,5 +49,14 @@
         </button>
       </div>
     </form>
+    <pre>
+      {{LoginForm}}
+    </pre>
   </div>
 </template>
+
+<script setup lang="ts">
+  import { useAuthStore } from '../../stores/auth.store';
+
+  const {LoginEmailAndPassword, LoginForm} = useAuthStore();
+</script>
