@@ -9,7 +9,7 @@
             />
           </figure>
           <div class="card-body">
-            <h2 class="card-title">Welcome Again!</h2>
+            
             <slot></slot>
            
           </div>

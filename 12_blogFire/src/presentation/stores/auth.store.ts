@@ -1,27 +1,30 @@
 import { LoginEmailAndPasswordUseCase } from "@/domain/use-cases/auth/loginEmailAndPassword.use_case";
 import { defineStore } from "pinia";
 import { reactive } from "vue";
+import { RegisterUseCase } from '../../domain/use-cases/auth/registrer.use_case';
 
-const LoginFormInitialState = {
+const AuthFormInitialState = {
   email: "",
   password: "",
+  confirmPassword: "",
 };
 
 export const useAuthStore = defineStore("auth", () => {
-  const LoginForm = reactive({
-    ...LoginFormInitialState,
+  const authForm = reactive({
+    ...AuthFormInitialState,
   });
 
   const resetForm = () => {
-    LoginForm.email = LoginFormInitialState.email;
-    LoginForm.password = LoginFormInitialState.password;
+    authForm.email = AuthFormInitialState.email;
+    authForm.password = AuthFormInitialState.password;
+    authForm.confirmPassword = AuthFormInitialState.confirmPassword;
   };
 
   const LoginEmailAndPassword = async () => {
     try {
       const user = await LoginEmailAndPasswordUseCase.execute(
-        LoginForm.email,
-        LoginForm.password
+        authForm.email,
+        authForm.password
       );
         console.log(user);
     } catch (e) {
@@ -30,9 +33,26 @@ export const useAuthStore = defineStore("auth", () => {
     }
   };
 
+  //register
+
+  const RegisterEmailAndPassword = async () => {
+    try {
+      const user = await RegisterUseCase.execute(
+        authForm.email,
+        authForm.password,
+        
+      );
+        console.log(user);
+    } catch (e) {
+      console.log(e);
+      resetForm();
+    }
+  }
+
   return {
-    LoginForm,
+    authForm,
     resetForm,
     LoginEmailAndPassword,
+    RegisterEmailAndPassword
   };
 });

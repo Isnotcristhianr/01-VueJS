@@ -1,6 +1,6 @@
-import { useAuthStore } from '../../stores/auth.store';
 <template>
   <div>
+    <h2 class="card-title">Welcome Again!</h2>
     <form @submit.prevent="LoginEmailAndPassword">
       <div class="form-control">
         <label class="input input-bordered flex items-center gap-2 m-1">
@@ -18,7 +18,7 @@ import { useAuthStore } from '../../stores/auth.store';
             />
           </svg>
           <input
-          v-model="LoginForm.email"
+          v-model="authForm.email"
           type="text" class="grow" placeholder="Email" />
         </label>
         <label class="input input-bordered flex items-center gap-2 m-1">
@@ -35,28 +35,30 @@ import { useAuthStore } from '../../stores/auth.store';
             />
           </svg>
           <input
-          v-model="LoginForm.password"
+          v-model="authForm.password"
           type="password" class="grow" placeholder="password" />
         </label>
       </div>
       <div class="card text-center m-1">
         <button class="btn btn-primary">Login</button>
         <!-- with google -->
-        <button class="btn m-1" disabled>
+        <button type="button" class="btn m-1">
           <!-- usar svg -->
           <img src="../../assets/Icono Google.svg" alt="" width="20" />
           Login with Google
         </button>
       </div>
     </form>
-    <pre>
-      {{LoginForm}}
-    </pre>
   </div>
 </template>
 
 <script setup lang="ts">
-  import { useAuthStore } from '../../stores/auth.store';
+  import { onMounted } from 'vue';
+import { useAuthStore } from '../../stores/auth.store';
 
-  const {LoginEmailAndPassword, LoginForm} = useAuthStore();
+  const {LoginEmailAndPassword, authForm, resetForm} = useAuthStore();
+
+  onMounted(() => {
+    resetForm();
+  });
 </script>
