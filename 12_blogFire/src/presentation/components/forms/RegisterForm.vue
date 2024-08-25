@@ -57,13 +57,9 @@
           </label>
         </div>
         <div class="card text-center m-1">
-          <button class="btn btn-primary">Login</button>
+          <button class="btn btn-primary">Register</button>
           <!-- with google -->
-          <button type="button" class="btn m-1">
-            <!-- usar svg -->
-            <img src="../../assets/Icono Google.svg" alt="" width="20" />
-            Login with Google
-          </button>
+         
         </div>
       </form>
     </div>
