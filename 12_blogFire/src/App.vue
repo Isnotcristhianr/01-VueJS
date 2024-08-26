@@ -11,9 +11,11 @@ onMounted(async () => {
 
   if (currentUser){
     router.replace({ name: 'blog' })
+  }else{
+    router.replace({ name: 'login' })
   }
 
-  
+
 })
 </script>
 

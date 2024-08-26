@@ -7,8 +7,7 @@ import LoginForm from '../../components/forms/LoginForm.vue';
 <template>
     <div>
         <AuthLayout>
-
-            <LoginForm />
+                <LoginForm />
         </AuthLayout>
     </div>
 </template>

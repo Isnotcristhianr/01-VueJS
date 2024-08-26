@@ -1,8 +1,8 @@
 <template>
-  <div>
+  <div class=" mx-auto">
     <h2 class="card-title">Welcome Again!</h2>
-    <form @submit.prevent="login">
-      <div class="form-control">
+    <form @submit.prevent="login" class="">
+      <div class="form-control ">
         <label class="input input-bordered flex items-center gap-2 m-1">
           <svg
             xmlns="http://www.w3.org/2000/svg"
