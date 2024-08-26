@@ -52,7 +52,7 @@
               />
             </svg>
             <input
-            v-model="authForm.password"
+            v-model="authForm.confirmPassword"
             type="password" class="grow" placeholder="Confirm password" />
           </label>
         </div>
@@ -62,6 +62,9 @@
          
         </div>
       </form>
+      <pre>
+        {{authForm}}
+      </pre>
     </div>
   </template>
   

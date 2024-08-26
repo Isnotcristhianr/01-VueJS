@@ -2,6 +2,8 @@ import { LoginEmailAndPasswordUseCase } from "@/domain/use-cases/auth/loginEmail
 import { defineStore } from "pinia";
 import { reactive } from "vue";
 import { RegisterUseCase } from '../../domain/use-cases/auth/registrer.use_case';
+import { verifyPasswor } from '../../helpers/verifyPassword';
+import { auth } from "@/config/firebaseConfig";
 
 const AuthFormInitialState = {
   email: "",
@@ -37,6 +39,15 @@ export const useAuthStore = defineStore("auth", () => {
 
   const RegisterEmailAndPassword = async () => {
     try {
+
+      if(authForm.password.length < 6 || authForm.confirmPassword.length < 6){
+        throw new Error("Password must be at least 6 characters");
+      }
+
+      if(!verifyPasswor(authForm.password, authForm.confirmPassword)){
+        throw new Error("Password and Confirm Password must be the same");
+      }
+
       const user = await RegisterUseCase.execute(
         authForm.email,
         authForm.password,
