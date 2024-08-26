@@ -1,7 +1,7 @@
 <template>
   <div>
     <h2 class="card-title">Welcome Again!</h2>
-    <form @submit.prevent="LoginEmailAndPassword">
+    <form @submit.prevent="login">
       <div class="form-control">
         <label class="input input-bordered flex items-center gap-2 m-1">
           <svg
@@ -40,7 +40,7 @@
         </label>
       </div>
       <div class="card text-center m-1">
-        <button class="btn btn-primary">Login</button>
+        <button class="btn btn-primary text-white">Login</button>
         <!-- with google -->
         <button type="button" class="btn m-1">
           <!-- usar svg -->
@@ -49,14 +49,36 @@
         </button>
       </div>
     </form>
+    <br>
+    <hr>
+    <!-- crear cuenta -->
+    <div class="card text-center m-1">
+      <p>Don't have an account?</p>
+      <router-link to="/auth/register" class="btn btn-error text-white">Register</router-link>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
   import { onMounted } from 'vue';
-import { useAuthStore } from '../../stores/auth.store';
+  import { useAuthStore } from '../../stores/auth.store';
+  
+  //ruta
+  import { useRouter } from 'vue-router';
+  const router = useRouter();
 
   const {LoginEmailAndPassword, authForm, resetForm} = useAuthStore();
+
+  const login = async()=>{
+    const user = await LoginEmailAndPassword();
+
+    if(user){
+      router.replace({
+        name: 'blog'
+      }
+      );
+    }
+  }
 
   onMounted(() => {
     resetForm();

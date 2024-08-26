@@ -1,7 +1,7 @@
 <template>
     <div>
         <h2 class="card-title"> Register</h2>
-      <form @submit.prevent="RegisterEmailAndPassword">
+      <form @submit.prevent="register">
         <div class="form-control">
           <label class="input input-bordered flex items-center gap-2 m-1">
             <svg
@@ -62,17 +62,29 @@
          
         </div>
       </form>
-      <pre>
-        {{authForm}}
-      </pre>
     </div>
   </template>
   
   <script setup lang="ts">
     import { onMounted } from 'vue';
   import { useAuthStore } from '../../stores/auth.store';
+
+  //ruta
+  import { useRouter } from 'vue-router';
+  const router = useRouter();
   
     const {RegisterEmailAndPassword, authForm, resetForm} = useAuthStore();
+
+    const register = async()=>{
+      const user = await RegisterEmailAndPassword();
+
+      if(user){
+        router.replace({
+          name: 'blog'
+        }
+        );
+      }
+    }
   
     onMounted(() => {
       resetForm();
