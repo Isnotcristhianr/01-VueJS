@@ -1,4 +1,8 @@
-import { signInWithEmailAndPassword, type UserCredential } from "firebase/auth";
+import {
+  signInWithEmailAndPassword,
+  signOut,
+  type UserCredential,
+} from "firebase/auth";
 import { AuthRepository } from "@/domain/repository/auth/auth.repository";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 
@@ -22,5 +26,12 @@ export class AuthModel extends AuthRepository {
     console.log("register user with email and password");
 
     return createUserWithEmailAndPassword(auth, email, password);
+  }
+
+  //cerrar sesion
+  logout(): Promise<void> {
+    console.log("logout");
+
+    return signOut(auth);
   }
 }

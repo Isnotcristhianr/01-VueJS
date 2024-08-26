@@ -18,4 +18,10 @@ export class AuthService {
 
     return new AuthModel().registerUserWithEmailAndPassword(email, password);
   }
+
+  //cerrar sesion
+  public static logout(){
+    console.log("logout");
+    return new AuthModel().logout();
+  }
 }

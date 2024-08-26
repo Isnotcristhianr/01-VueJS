@@ -4,6 +4,7 @@ import { reactive } from "vue";
 import { RegisterUseCase } from "../../domain/use-cases/auth/registrer.use_case";
 import { verifyPasswor } from "../../helpers/verifyPassword";
 import { auth } from "@/config/firebaseConfig";
+import { logoutUseCase } from "@/domain/use-cases/auth/logout.use_case";
 
 const AuthFormInitialState = {
   email: "",
@@ -66,10 +67,18 @@ export const useAuthStore = defineStore("auth", () => {
 
       //redirecion
       return user;
-      
     } catch (e) {
       console.log(e);
       resetForm();
+    }
+  };
+
+  //cerrar sesion
+  const logout = () => {
+    try {
+      return logoutUseCase.execute();
+    } catch (e) {
+      console.log(e);
     }
   };
 
@@ -78,5 +87,6 @@ export const useAuthStore = defineStore("auth", () => {
     resetForm,
     LoginEmailAndPassword,
     RegisterEmailAndPassword,
+    logout,
   };
 });

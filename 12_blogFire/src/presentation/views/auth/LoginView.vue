@@ -2,7 +2,6 @@
 import AuthLayout from '../../layouts/AuthLayout.vue';
 import LoginForm from '../../components/forms/LoginForm.vue';
 
-
 </script>
 
 <template>
@@ -13,3 +12,4 @@ import LoginForm from '../../components/forms/LoginForm.vue';
         </AuthLayout>
     </div>
 </template>
+
