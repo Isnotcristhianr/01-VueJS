@@ -40,11 +40,12 @@
         </label>
       </div>
       <div class="card text-center m-1">
-        <button class="btn btn-primary text-white">Login</button>
+        <button type="submit" class="btn btn-primary text-white">Login</button>
         <!-- with google -->
-        <button type="button" class="btn m-1">
+        <button  @click="loginGoogle" type="button" class="btn m-1">
           <!-- usar svg -->
-          <img src="../../assets/Icono Google.svg" alt="" width="20" />
+          <img
+          src="../../assets/Icono Google.svg" alt="" width="20" />
           Login with Google
         </button>
       </div>
@@ -67,7 +68,7 @@
   import { useRouter } from 'vue-router';
   const router = useRouter();
 
-  const {LoginEmailAndPassword, authForm, resetForm} = useAuthStore();
+  const {LoginEmailAndPassword, authForm, resetForm, loginWhitGoogle} = useAuthStore();
 
   const login = async()=>{
     const user = await LoginEmailAndPassword();
@@ -78,6 +79,19 @@
       }
       );
     }
+  }
+
+  const loginGoogle = async()=>{
+    const user = await loginWhitGoogle();
+
+    if(user){
+      return router.replace({
+        name: 'blog'
+      });
+    }
+    return router.replace({
+      name: 'login'
+    });
   }
 
   onMounted(() => {

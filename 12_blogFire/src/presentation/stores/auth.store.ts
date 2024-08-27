@@ -5,6 +5,7 @@ import { RegisterUseCase } from "../../domain/use-cases/auth/registrer.use_case"
 import { verifyPasswor } from "../../helpers/verifyPassword";
 import { auth } from "@/config/firebaseConfig";
 import { logoutUseCase } from "@/domain/use-cases/auth/logout.use_case";
+import { LoginGoogleUseCase } from "@/domain/use-cases/auth/loginGoogle.use_case";
 
 const AuthFormInitialState = {
   email: "",
@@ -82,11 +83,28 @@ export const useAuthStore = defineStore("auth", () => {
     }
   };
 
+  //sesion google
+  const loginWhitGoogle = async () => {
+    try{
+      const user = await LoginGoogleUseCase.execute();
+
+      if(!user){
+        throw new Error("Error to login with google");
+      }
+
+      return user;
+    }catch(e){
+      console.log(e);
+      resetForm();
+    }
+  }
+
   return {
     authForm,
     resetForm,
     LoginEmailAndPassword,
     RegisterEmailAndPassword,
     logout,
+    loginWhitGoogle,
   };
 });

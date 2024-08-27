@@ -11,4 +11,7 @@ export abstract class AuthRepository {
   ): Promise<UserCredential>;
   //cerrar sesion
   abstract logout(): Promise<void>;
+
+  //sesion google
+  abstract signInWhithGoogle(): Promise<UserCredential>;
 }

@@ -4,9 +4,9 @@ import {
   type UserCredential,
 } from "firebase/auth";
 import { AuthRepository } from "@/domain/repository/auth/auth.repository";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 
-import { auth } from "@/config/firebaseConfig";
+import { auth, googleProvider } from "@/config/firebaseConfig";
 
 export class AuthModel extends AuthRepository {
   //patron repository
@@ -33,5 +33,12 @@ export class AuthModel extends AuthRepository {
     console.log("logout");
 
     return signOut(auth);
+  }
+
+  //sesion google
+  signInWhithGoogle(): Promise<UserCredential> {
+    console.log("signInWhithGoogle");
+
+    return signInWithPopup(auth, googleProvider);
   }
 }

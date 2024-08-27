@@ -24,4 +24,9 @@ export class AuthService {
     console.log("logout");
     return new AuthModel().logout();
   }
+
+  //sesion google
+  public static signInWhithGoogle(){
+    return new AuthModel().signInWhithGoogle();
+  }
 }
