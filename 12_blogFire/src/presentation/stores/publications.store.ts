@@ -1,31 +1,32 @@
-import { LoadPublicationsUseCase } from "@/domain/use-cases/blog/loadPublications.use_case"
-import { defineStore } from "pinia"
+import { LoadPublicationsUseCase } from "@/domain/use-cases/blog/loadPublications.use_case";
+import { onSnapshot } from "firebase/firestore";
+import { defineStore } from "pinia";
 import { reactive } from "vue";
 
 interface Data {
-    publications: any[];
-}   
+  publications: any[];
+}
 
-export const UsePublications = defineStore( 'publications', () => {
+export const UsePublications = defineStore("publications", () => {
+  const data = reactive<Data>({
+    publications: [],
+  });
 
-    const data = reactive<Data>({
-        publications : [] 
+  const findAll = async () => {
+    const query = await LoadPublicationsUseCase.execute();
+
+    onSnapshot(query, (docs) => {
+      data.publications = [];
+      docs.forEach((publication) => {
+        if (publication.exists()) {
+          data.publications.push(publication.data());
+        }
+      });
     });
+  };
 
-    const findAll = async () => {
-        const result =  (await LoadPublicationsUseCase.execute()).docs;
-
-        result.forEach( (doc) => {
-            //console.log(doc.data());
-            if( doc.exists() ){
-                data.publications.push( doc.data() );
-            }
-        } );
-    }
-
-
-    return {
-        findAll,
-        data
-    }
-} )
+  return {
+    findAll,
+    data,
+  };
+});
