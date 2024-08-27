@@ -3,7 +3,7 @@ import { onMounted } from 'vue';
 import AppLayout from '../../layouts/AppLayout.vue';
 import { UsePublications } from '../../stores/publications.store';
 
-const { findAll } = UsePublications(); 
+const { findAll, data } = UsePublications(); 
 
 onMounted(() => {
     findAll();
@@ -17,6 +17,9 @@ onMounted(() => {
         <h1>
             Blog
         </h1>
+        <pre>
+            {{ data }}
+        </pre>
       </AppLayout>  
     </div>
 </template>
