@@ -3,12 +3,12 @@ import { onSnapshot } from "firebase/firestore";
 import { defineStore } from "pinia";
 import { reactive } from "vue";
 
-interface Data {
-  publications: any[];
-}
+//import { PublicationEntity } from '../../domain/entities/publication.entity';
+import type { PublicationEntity } from "@/domain/entities/publication.entity";
+import { formatPublicationAdapter } from "@/adapters/presenters/formatPublication";
 
 export const UsePublications = defineStore("publications", () => {
-  const data = reactive<Data>({
+  const data = reactive<{ publications: PublicationEntity[] }>({
     publications: [],
   });
 
@@ -19,7 +19,12 @@ export const UsePublications = defineStore("publications", () => {
       data.publications = [];
       docs.forEach((publication) => {
         if (publication.exists()) {
-          data.publications.push(publication.data());
+          const formatPublication: PublicationEntity = formatPublicationAdapter(
+            publication.data(),
+            publication.id
+          );
+
+          data.publications.push(formatPublication);
         }
       });
     });
