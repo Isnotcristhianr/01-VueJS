@@ -6,6 +6,7 @@ import { reactive } from "vue";
 //import { PublicationEntity } from '../../domain/entities/publication.entity';
 import type { PublicationEntity } from "@/domain/entities/publication.entity";
 import { formatPublicationAdapter } from "@/adapters/presenters/formatPublication";
+import { createPublicationUseCase } from "@/domain/use-cases/blog/createPublication.use_case";
 
 export const UsePublications = defineStore("publications", () => {
   const data = reactive<{ publications: PublicationEntity[] }>({
@@ -30,8 +31,20 @@ export const UsePublications = defineStore("publications", () => {
     });
   };
 
+  //create publication
+  const create = async (publicationData: PublicationEntity) =>{
+    try{
+
+      await createPublicationUseCase.execute(publicationData);
+
+    }catch(error){
+      console.error(error);
+    }
+  }
+
   return {
     findAll,
     data,
+    create
   };
 });

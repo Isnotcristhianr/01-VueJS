@@ -1,8 +1,10 @@
+import type { Timestamp } from "firebase/firestore";
+
 export interface PublicationEntity {
   uid: string;
-  id: string;
+  id?: string;
   active: boolean;
-  createdAt: Date;
+  createdAt: Date | Timestamp;
   body: string;
   img?: string;
 }
