@@ -3,7 +3,7 @@
    
     <Header />
 
-    <main>
+    <main class="m-10">
       <slot></slot>
     </main>
   </div>
