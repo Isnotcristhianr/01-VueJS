@@ -7,6 +7,7 @@ import { UsePublications } from '../../stores/publications.store';
 //presentation
 import AppLayout from '../../layouts/AppLayout.vue';
 import CreatePublicationForm from '../../components/forms/CreatePublicationForm.vue';
+import PublicationList from '../../components/publications/PublicationsList.vue';
 
 const { findAll, data } = UsePublications(); 
 
@@ -25,6 +26,7 @@ onMounted(() => {
         
         <CreatePublicationForm />
 
+        <PublicationList />
       </AppLayout>  
     </div>
 </template>

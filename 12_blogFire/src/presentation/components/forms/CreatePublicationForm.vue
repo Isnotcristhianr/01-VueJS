@@ -19,6 +19,7 @@ import { useFirebaseAuth } from 'vuefire';
 import { formatPublicationDataSourceAdapter } from '../../../adapters/datasources/formatPublicationDataSource';
 
 import { UsePublications } from '../../stores/publications.store';
+import swal from 'sweetalert2';
 
     const { create } = UsePublications();
 
@@ -28,9 +29,9 @@ import { UsePublications } from '../../stores/publications.store';
 
     const auth = useFirebaseAuth();
 
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
         if(publicationForm.body.length < 10){
-            alert('Publication must be at least 10 characters');
+            swal.fire('Error', 'La publicación debe tener al menos 10 caracteres', 'error');
             return;
         }
 
@@ -43,6 +44,7 @@ import { UsePublications } from '../../stores/publications.store';
             publicationForm, uid
         )
 
-        create(formatData);
+        await create(formatData);
+        publicationForm.body = '';
     }    
 </script>

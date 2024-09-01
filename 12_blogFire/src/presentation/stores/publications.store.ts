@@ -7,6 +7,7 @@ import { reactive } from "vue";
 import type { PublicationEntity } from "@/domain/entities/publication.entity";
 import { formatPublicationAdapter } from "@/adapters/presenters/formatPublication";
 import { createPublicationUseCase } from "@/domain/use-cases/blog/createPublication.use_case";
+import Swal from "sweetalert2";
 
 export const UsePublications = defineStore("publications", () => {
   const data = reactive<{ publications: PublicationEntity[] }>({
@@ -35,10 +36,15 @@ export const UsePublications = defineStore("publications", () => {
   const create = async (publicationData: PublicationEntity) =>{
     try{
 
+      Swal.showLoading();
+
       await createPublicationUseCase.execute(publicationData);
 
     }catch(error){
       console.error(error);
+    }finally{
+      
+      Swal.hideLoading();
     }
   }
 
