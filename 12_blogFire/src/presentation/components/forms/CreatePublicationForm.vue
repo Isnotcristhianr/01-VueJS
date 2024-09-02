@@ -3,7 +3,13 @@
         <div class="label">
             <span class="label-text">Create Publication</span>
         </div>
-        <textarea class="textarea textarea-bordered h-24" placeholder="Comparte tu idea...."
+        <!-- subir img -->
+        <div class=" file text-center m-3">
+            <input @change="handleUploadImg"
+            type="file" class="file-input file-input-xs file-input-primary" accept="image/*">
+
+        </div>
+        <textarea class="textarea textarea-bordered h-24" placeholder="Share your dea...."
             v-model="publicationForm.body"
         ></textarea>
         <div class="text-end">
@@ -23,9 +29,27 @@ import swal from 'sweetalert2';
 
     const { create } = UsePublications();
 
-    const  publicationForm = reactive({
-        body: ''
+    const  publicationForm = reactive<{body: string, img?: File}>({
+        body: '',
+        img: undefined
     });
+
+    const clearForm = () => {
+        publicationForm.body = '';
+    }
+
+    //img
+    const handleUploadImg = (event: Event) => {
+        const target = event.target as HTMLInputElement;
+        
+        if(target.files!.length <= 0 ){
+            return;
+        }
+
+        const file = target.files![0];
+        publicationForm.img = file;
+
+    }
 
     const auth = useFirebaseAuth();
 
@@ -44,7 +68,9 @@ import swal from 'sweetalert2';
             publicationForm, uid
         )
 
+
+
         await create(formatData);
-        publicationForm.body = '';
+        clearForm();
     }    
 </script>
