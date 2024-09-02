@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "firebase": "^10.13.0",
+    "luxon": "^3.5.0",
     "pinia": "^2.1.7",
     "sweetalert2": "^11.12.4",
     "vue": "^3.4.21",
@@ -20,6 +21,7 @@
   },
   "devDependencies": {
     "@tsconfig/node20": "^20.1.2",
+    "@types/luxon": "^3.4.2",
     "@types/node": "^20.11.28",
     "@vitejs/plugin-vue": "^5.0.4",
     "@vue/tsconfig": "^0.5.1",

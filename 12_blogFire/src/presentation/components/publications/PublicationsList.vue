@@ -1,7 +1,7 @@
 <template>
     <div class="m-2">
 
-        <div class="card card-compact bg-base-200 shadow-xl w-auto" v-for="publication in data.publications" v-bind:key="publication.id">
+        <div class="card card-compact bg-base-200 shadow-xl w-auto m-3" v-for="publication in data.publications" v-bind:key="publication.id">
             <figure>
                 <img
                 :src="publication.img"
