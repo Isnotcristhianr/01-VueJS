@@ -1,11 +1,17 @@
 import { firestore, } from "@/config/firebaseConfig";
 import type { PublicationEntity } from "@/domain/entities/publication.entity";
 import { PublicationRepository } from "@/domain/repository/blog/publication.repository";
-import { addDoc, collection, } from "firebase/firestore";
+import { query } from "firebase/database";
+import { addDoc, collection, limit, orderBy, where, } from "firebase/firestore";
 
 export class PublicationModel extends PublicationRepository {
   findAll() {
-   return collection(firestore, "publications");
+    return query(
+      collection(firestore, "publications"),
+      orderBy("createdAt", "desc"),
+      limit(100),
+      where("active", "==", true)
+    );
   }
 
   //create
