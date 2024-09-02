@@ -7,6 +7,7 @@
                 :src="publication.img"
                 w="200"
                 :alt="publication.id"
+                class="rounded-lg"
                 />
             </figure>
             <div class="card-body">
