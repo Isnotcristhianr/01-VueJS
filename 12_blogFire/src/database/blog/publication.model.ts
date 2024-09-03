@@ -1,8 +1,7 @@
 import { firestore, } from "@/config/firebaseConfig";
 import type { PublicationEntity } from "@/domain/entities/publication.entity";
 import { PublicationRepository } from "@/domain/repository/blog/publication.repository";
-import { query } from "firebase/database";
-import { addDoc, collection, limit, orderBy, where, } from "firebase/firestore";
+import { addDoc, collection, limit, orderBy, where, query } from "firebase/firestore";
 
 export class PublicationModel implements PublicationRepository {
   findAll() {

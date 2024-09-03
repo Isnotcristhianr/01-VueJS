@@ -11,7 +11,7 @@ import { StorageImgUseCase } from "@/domain/use-cases/blog/storageImg.use_case";
 import { GetDownloadImgUseCase } from "@/domain/use-cases/blog/getDownloadImg.use_case";
 
 //db
-import { onSnapshot } from "firebase/firestore";
+import { onSnapshot, QuerySnapshot, DocumentSnapshot } from "firebase/firestore";
 
 //otro
 import Swal from "sweetalert2";
@@ -25,13 +25,13 @@ export const UsePublications = defineStore("publications", () => {
   const findAll = async () => {
     const query = await LoadPublicationsUseCase.execute();
 
-    onSnapshot(query, (docs) => {
+    onSnapshot(query, (snapshot: QuerySnapshot<DocumentSnapshot>) => {
       data.publications = [];
-      docs.forEach((publication) => {
-        if (publication.exists()) {
+      snapshot.forEach((doc) => {
+        if (doc.exists()) {
           const formatPublication: PublicationEntity = formatPublicationAdapter(
-            publication.data(),
-            publication.id
+            doc.data(),
+            doc.id
           );
 
           data.publications.push(formatPublication);
