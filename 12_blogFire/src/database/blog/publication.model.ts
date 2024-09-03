@@ -4,7 +4,7 @@ import { PublicationRepository } from "@/domain/repository/blog/publication.repo
 import { query } from "firebase/database";
 import { addDoc, collection, limit, orderBy, where, } from "firebase/firestore";
 
-export class PublicationModel extends PublicationRepository {
+export class PublicationModel implements PublicationRepository {
   findAll() {
     return query(
       collection(firestore, "publications"),

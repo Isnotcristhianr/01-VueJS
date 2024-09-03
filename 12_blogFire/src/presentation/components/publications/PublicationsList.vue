@@ -1,11 +1,11 @@
 <template>
-    <div class="m-2">
+    <div class="m-2 xl:ml-96 xl:mr-96">
 
         <div class="card card-compact bg-base-200 shadow-xl w-auto m-3" v-for="publication in data.publications" v-bind:key="publication.id">
             <figure>
                 <img
                 :src="publication.img"
-                w="200"
+                width="50%"
                 :alt="publication.id"
                 class="rounded-lg"
                 />

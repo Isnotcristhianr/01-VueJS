@@ -1,32 +1,37 @@
-import { AuthModel } from "../database/auth/auth.model";
+import { AuthRepository } from "@/domain/repository/auth/auth.repository";
+//import { AuthModel } from "../database/auth/auth.model";
 
 export class AuthService {
+
+  //inyeccion de dependencias
+  constructor(private readonly authRepository: AuthRepository) {}
+
   //private AuthModel: AuthModel = new AuthModel();
 
   //static para invocar una sola vez
-  public static signInEmailAndPassword(email: string, password: string) {
+  public signInEmailAndPassword(email: string, password: string) {
     console.log("signInEmailAndPassword");
 
-    return new AuthModel().signInEmailAndPassword(email, password);
+    return this.authRepository.signInEmailAndPassword(email, password);
   }
 
-  public static registerUserWithEmailAndPassword(
+  public registerUserWithEmailAndPassword(
     email: string,
     password: string
   ) {
     console.log("register user with email and password");
 
-    return new AuthModel().registerUserWithEmailAndPassword(email, password);
+    return this.authRepository.registerUserWithEmailAndPassword(email, password);
   }
 
   //cerrar sesion
-  public static logout(){
+  public logout(){
     console.log("logout");
-    return new AuthModel().logout();
+    return this.authRepository.logout();
   }
 
   //sesion google
-  public static signInWhithGoogle(){
-    return new AuthModel().signInWhithGoogle();
+  public signInWhithGoogle(){
+    return this.authRepository.signInWhithGoogle();
   }
 }

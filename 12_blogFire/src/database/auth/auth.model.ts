@@ -8,7 +8,7 @@ import { createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 
 import { auth, googleProvider } from "@/config/firebaseConfig";
 
-export class AuthModel extends AuthRepository {
+export class AuthModel implements AuthRepository {
   //patron repository
   signInEmailAndPassword(
     email: string,
