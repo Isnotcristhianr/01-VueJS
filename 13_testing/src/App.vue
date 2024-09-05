@@ -1,20 +1,19 @@
 <template>
-  <h1>Contador: {{ count }}</h1>
+  <Contador />
 </template>
 
 <script>
 //import HelloWorld from './components/HelloWorld.vue'
+import Contador from './components/Contador.vue'
 
 export default {
   name: 'App',
  /*  components: {
     HelloWorld
   } */
- props: {
-   count: {
-     type: Number
-   }
- }
+  components: {
+    Contador
+  }
 }
 
 </script>
