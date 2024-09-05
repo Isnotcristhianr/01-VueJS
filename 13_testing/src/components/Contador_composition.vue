@@ -1,7 +1,6 @@
 <template>
   <div>
     <h1>Contador: {{ counterStore.count }}</h1>
-    <h2>d</h2>
     <!-- btn -->
     <button id="add" @click="counterStore.increment">Incrementar</button>
     <button id="diss" @click="counterStore.decrement">Decrementar</button>
@@ -10,8 +9,7 @@
 </template>
 
 <script>
-import { counterStore } from "store/counterStore";
-import { ref } from "vue";
+import { counterStore } from '../../store/counterStore';
 
 export default {
   setup() {

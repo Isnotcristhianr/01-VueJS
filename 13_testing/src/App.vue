@@ -1,10 +1,16 @@
 <template>
-  <Contador />
+  <div>
+
+    <ContadorComposition />
+    <hr>
+    <ContadorComposition />
+  </div>
+
 </template>
 
 <script>
 //import HelloWorld from './components/HelloWorld.vue'
-import Contador from './components/Contador.vue'
+import ContadorComposition from './components/Contador_composition.vue'
 
 export default {
   name: 'App',
@@ -12,7 +18,7 @@ export default {
     HelloWorld
   } */
   components: {
-    Contador
+    ContadorComposition
   }
 }
 
